@@ -153,7 +153,18 @@ note:
 * development workflow
 * visibility (dashboard)
 * OS-Optimierung für möglichst wenige Schreibvorgänge auf SD-Card, Toolkit für einfaches Setup neuer vorkonfigurierter Geräte
-* balena
+* container deltas
+
+---
+## TODO: Balena
+
+* https://www.balena.io/
+
+<img src="/slides/images/balena.svg">
+
+note:
+https://resin.io/blog/announcing-balena-a-moby-based-container-engine-for-iot/#technical_comparison
+TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA (https://docs.resin.io/learn/deploy/delta/)
 
 >>>
 <img src="/slides/images/architecture.png" style="width: 50%">
@@ -182,6 +193,9 @@ build grid
 * network accessibility ✔
 * unreliable network ✔
 
+---
+<img src="/slides/images/20171110_150023.jpg">
+
 
 ---
 ## Show me the code!
@@ -191,35 +205,58 @@ build grid
 note:
 Photo by Caspar Rubin on Unsplash
 
+* unwrap raspberry
 * Resin-Dashboard
 * neue App
-* config.json download
-* auf vorbereitete SD-Karte schreiben (flash-Kommando nur erwähnen)
+* download iso und flash (vorbereitet, resin local flash)
 * Online nehmen
-* hello world pushen
-* kleine app mit Mitmachmöglichkeit
-
-
-```bash
-resin ssh 537... --host
-root@537:~# docker ps
-CONTAINER ID        IMAGE                                     CREATED
-9d010ac4757e        registry2.resin.io/shopscreenesa/f31...   About an hour ago
-7fc3a763df40        resin/armv7hf-supervisor:v6.3.6           5 months ago
-```
+* TODO: hello world app erstellen und pushen (ev. sinatra auf port 80, dann mit public device url herzeigen)
+* Im Dashboard herzeigen, mit env variablen, und actions
+* TODO: dev mode herzeigen (mit zweitem Pi)
+* TODO: kleine app mit Mitmachmöglichkeit
 
 ---
 # Thanks a lot!
 
-## The Foo-Bar is open!
+## Next Up: Announcements and opening of the Foo-Bar!
 
 note:
+TODO (Stichworte extrahieren, überlegen wo in Präsentation einbauen):
+* https://resin.io/blog/filters-and-tags-a-fleet-management-primer-for-resin-io/
+
+Andere Inhalte, nicht sicher ob ausreichend Zeit in Präsentation vorhanden:
+https://resin.io/blog/multicontainer-on-resin-io-is-here/
+
+
+```bash
+resin ssh 537... --host
+root@537:~# balena ps
+CONTAINER ID        IMAGE                                     CREATED
+9d010ac4757e        registry2.resin.io/shopscreenesa/f31...
+5fdabad3c75b        resin/armv7hf-supervisor:v7.1.18
+```
+
+
+MÖGLICHE WEITERE THEMEN:
 WLAN setup (USB, WifiConnect)
 Videoplayer Performance
-flash deployment localdev dbus
+dbus (network einstellen herzeigen)
 AWS IoT, Azure, IBM, Artik Cloud
-links, books, pointers
-! Konfiguration / Zuordnung 
-dev mode: ssh access, docker socketo
-fleet management script herzeigen
-resin api
+dev mode: ssh access, docker socket
+* ev: Concourse-Pipeline für Resin-Deployments?
+
+SOME CLI COMMANDS:
+resin help --verbose
+resin devices -a webdev
+resin device rename UUID
+resin ssh UUID
+resin os versions raspberrypi3
+resin os download raspberrypi3 -o out.img
+resin logs UUID
+resin preload  os.img --app xxx --commit xxx --splash-image logo.png
+resin local flash os.img
+resin apps
+resin device register APP_NAME
+resin device rename UUID
+resin config generate --device UUID --output FILE
+resin config inject FILE --type raspberrypi3
