@@ -20,6 +20,13 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.reveal .slides img {
+				border: none;
+				background: none;
+				box-shadow: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">

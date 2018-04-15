@@ -2,8 +2,6 @@
 
 ## Easy deployment and fleet management for IoT devices
 
-<img src="/slides/images/atalanda_slider_1.jpg">
-
 note: about / the product / the problem
 willkommen / es geht um deployment / nicht wie gewohnt auf server / auf schwächere systeme / weniger leistung, netzwerk, unzuverlässig, verteilt
 im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele neue Lösungen / wir stellen Lösung für Raspberries vor / eigenes Produkt siehe Wall
@@ -13,7 +11,7 @@ im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele 
 
 # The product
 
-<img src="/slides/images/atalanda_slider_1.jpg">
+<img src="/slides/images/atalanda_slider_1.jpg" style="width:1000px">
 
 note: 
 * we want to use the display windows of merchants as an additional way for engaging customers
@@ -25,7 +23,8 @@ muss einfach / günstig sein
 * quizzes
 * ad network with city, other vendors and others
 * events
-<img src="/slides/images/atalanda_intro_1.jpg">
+
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
 
 note: more screenshots for events, quizzes, etc.
 
@@ -65,7 +64,7 @@ note: eliminate one after the other
 ---
 ## First take
 
-<img src="/slides/images/angel-sinigersky-512707-unsplash.jpg">
+<img src="/slides/images/angel-sinigersky-512707-unsplash.jpg" class="background">
 
 >>>
 <img src="/slides/images/little_pi.png">
@@ -155,23 +154,35 @@ note:
 * OS-Optimierung für möglichst wenige Schreibvorgänge auf SD-Card, Toolkit für einfaches Setup neuer vorkonfigurierter Geräte
 * container deltas
 
+>>>
+<img src="/slides/images/architecture.png" style="width: 50%">
+
 ---
-## TODO: Balena
+## Docker => Moby => Balena
 
 * https://www.balena.io/
 
 <img src="/slides/images/balena.svg">
 
 note:
+* 10-70 times more bandwidth efficient
+* atomic and durable image pulling (power & network failures)
+* conservative about how much it writes to the filesystem (not writing compressed layers, on the fly extraction)
+* low-memory
+* build-time volumes
+* small binary (3.5x smaller)
+- Docker Swarm, support for plugins, cloud logging drivers, overlay networking drivers, and stores that are not backed by boltdb, such as etcd, consul, zookeeper, etc
+
 https://resin.io/blog/announcing-balena-a-moby-based-container-engine-for-iot/#technical_comparison
 TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA (https://docs.resin.io/learn/deploy/delta/)
 
 >>>
-<img src="/slides/images/architecture.png" style="width: 50%">
 
-note:
+<img src="/slides/images/Balena-Blogpost.jpg">
 
->>>
+
+
+---
 https://docs.resin.io/reference/hardware/devices/
 <img src="/slides/images/resin_supported.png">
 
@@ -200,7 +211,7 @@ build grid
 ---
 ## Show me the code!
 
-<img src="/slides/images/caspar-rubin-224229-unsplash.jpg">
+<img src="/slides/images/caspar-rubin-224229-unsplash.jpg" class="background">
 
 note:
 Photo by Caspar Rubin on Unsplash
