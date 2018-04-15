@@ -19,24 +19,34 @@ zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda
 muss einfach / günstig sein
 
 >>>
+* pure text
+* image / text
+* pure image
+* quote
 * special deals
 * quizzes
-* ad network with city, other vendors and others
 * events
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
+
+>>>
+* different information layers
+  * city wide, district, neighbourhood, vendor
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
+
+>>>
+* different owners of information
+  * city manager
+  * local newspaper
+  * advertising association
+  * Atalanda
+  * vendor
 
 <img src="/slides/images/atalanda_intro_1.jpg" class="background">
 
 note: more screenshots for events, quizzes, etc.
 
->>>
-## This is not the way we want to update an IoT device
-
-<img src="/slides/images/maintenance.png">
-
-note: erster Teil zum Vermeiden ist das Admin-Backend /zweiter Teil später
-
 ---
-## Therefore the content can be updated with an admin backend
+## Admin backend for Merchants
 
 <img src="/slides/images/schaufenster_digital_screenshot.png">
 
@@ -79,6 +89,11 @@ Photo by Angel Sinigersky on Unsplash
 * Deployment
 * System-Updates
 * Visibility
+
+>>>
+## Of course this is not the way we want to update a device
+
+<img src="/slides/images/maintenance.png">
 
 ---
 ## Updates and Deployments (still first take)
@@ -183,8 +198,12 @@ TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA 
 
 
 ---
-https://docs.resin.io/reference/hardware/devices/
-<img src="/slides/images/resin_supported.png">
+## Device Support
+
+* https://docs.resin.io/reference/hardware/devices/
+* https://docs.resin.io/reference/base-images/resin-base-images/
+
+<img src="/slides/images/resin_supported.png" class="background">
 
 ---
 ## Deployment
@@ -224,7 +243,7 @@ Photo by Caspar Rubin on Unsplash
 * TODO: hello world app erstellen und pushen (ev. sinatra auf port 80, dann mit public device url herzeigen)
 * Im Dashboard herzeigen, mit env variablen, und actions
 * TODO: dev mode herzeigen (mit zweitem Pi)
-* TODO: kleine app mit Mitmachmöglichkeit
+* TODO: videoplayer service
 
 ---
 # Thanks a lot!
@@ -271,3 +290,6 @@ resin device register APP_NAME
 resin device rename UUID
 resin config generate --device UUID --output FILE
 resin config inject FILE --type raspberrypi3
+
+echo "on 0" | cec-client -s -o webdev -d 1
+echo "as" | cec-client -s -o webdev -d 1
