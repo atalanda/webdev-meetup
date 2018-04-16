@@ -98,7 +98,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 ### Many more additional features
 * Direct-Upload (from client/browser to cloud)
 * Progressbar
-* Upload to Amazon’s S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
+* Upload to Amazon S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
 * Mirroring
 * Asynchronous deletion
 * ...
@@ -118,7 +118,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 Note: Wer kennt Redis? Redis ist eine schnelle NoSQL In-Memory-Datenbank mit einer key-value Datenstruktur.
 
 
-## Previous Cachespeicher (for Pages, Fragments, ...)
+### Previous Cachespeicher (for Pages, Fragments, ...)
 * MemoryStore (RAM)
 * FileStore (file system)
 * MemCacheStore (Memory object caching system)
@@ -162,7 +162,7 @@ Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 ### Pull request
 
-https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065
+[github.com/rails/...](https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065)
 
 
 ![early-hints](slides/images/eary-hints-in-rails-of-course-will-we-use-it.jpg)

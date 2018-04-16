@@ -1,6 +1,6 @@
 # Manage a Flock of Rasperry Pi's with Docker and Resin.io
 
-## Easy deployment and fleet management for IoT devices
+#### Easy deployment and fleet management for IoT devices
 
 note: about / the product / the problem
 willkommen / es geht um deployment / nicht wie gewohnt auf server / auf schwächere systeme / weniger leistung, netzwerk, unzuverlässig, verteilt
@@ -8,10 +8,9 @@ im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele 
 
 
 ---
-
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 # The product
 
-<img src="/slides/images/atalanda_slider_1.jpg" style="width:1000px">
 
 note: 
 * we want to use the display windows of merchants as an additional way for engaging customers
@@ -19,6 +18,7 @@ zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda
 muss einfach / günstig sein
 
 >>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
 * pure text
 * image / text
 * pure image
@@ -26,29 +26,29 @@ muss einfach / günstig sein
 * special deals
 * quizzes
 * events
-<img src="/slides/images/atalanda_intro_1.jpg" class="background">
 
 >>>
-* different information layers
-  * city wide, district, neighbourhood, vendor
-<img src="/slides/images/atalanda_intro_1.jpg" class="background">
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+## Different information layers
+* city wide, district, neighbourhood, vendor
 
 >>>
-* different owners of information
-  * city manager
-  * local newspaper
-  * advertising association
-  * Atalanda
-  * vendor
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+## Different owners of information
+* city manager
+* local newspaper
+* advertising association
+* Atalanda
+* vendor
 
-<img src="/slides/images/atalanda_intro_1.jpg" class="background">
 
 note: more screenshots for events, quizzes, etc.
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 ## Admin backend for Merchants
 
-<img src="/slides/images/schaufenster_digital_screenshot.png">
+<img src="/slides/images/dashboard.png">
 
 ---
 ## The physical device: Proof of concept
@@ -60,9 +60,11 @@ note: configuration via tv remote, vendor instructions are easy but procedure is
 
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 # The problem(s)
 
 >>>
+<!-- .slide: data-background-color="#FFFFFF" -->
 * Customizability
 * Deployment
 * System-Updates
@@ -73,8 +75,7 @@ note: eliminate one after the other
 
 ---
 ## First take
-
-<img src="/slides/images/angel-sinigersky-512707-unsplash.jpg" class="background">
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/angel-sinigersky-512707-unsplash.jpg" -->
 
 >>>
 <img src="/slides/images/little_pi.png">
@@ -91,11 +92,11 @@ Photo by Angel Sinigersky on Unsplash
 * Visibility
 
 >>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/maintenance.png" -->
 ## Of course this is not the way we want to update a device
 
-<img src="/slides/images/maintenance.png">
-
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 ## Updates and Deployments (still first take)
 
 <img src="/slides/images/Ansible_logo.png", style="width:20%">
@@ -105,6 +106,7 @@ ansible => cm tool, yml files, einfach, von uns auch für andere Infrastruktur v
         => verwendbar auch für deployment
 
 >>>
+<!-- .slide: data-background-color="#FFFFFF" -->
 ```yaml
 ---
 - hosts: all
@@ -150,6 +152,7 @@ note:
 * vpn
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 ## Approach immutable infrastructure
 
 <img src="/slides/images/moby.png" style="width:50%">
@@ -157,6 +160,7 @@ note:
 * Minimize configuration drift with shifting as much work as possible to Docker
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 <img src="/slides/images/Resin-io-logo.png">
 
 note:
@@ -170,6 +174,7 @@ note:
 * container deltas
 
 >>>
+<!-- .slide: data-background-color="#FFFFFF" -->
 <img src="/slides/images/architecture.png" style="width: 50%">
 
 ---
@@ -198,6 +203,7 @@ TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA 
 
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 ## Device Support
 
 * https://docs.resin.io/reference/hardware/devices/
@@ -206,6 +212,7 @@ TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA 
 <img src="/slides/images/resin_supported.png" class="background">
 
 ---
+<!-- .slide: data-background-color="#FFFFFF" -->
 ## Deployment
 
 <img src="/slides/images/how_deploy_works.jpg" style="width: 100%">
@@ -224,13 +231,13 @@ build grid
 * unreliable network ✔
 
 ---
-<img src="/slides/images/20171110_150023.jpg">
+<!-- .slide: data-background-image="/slides/images/20171110_150023.jpg" -->
 
 
 ---
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/caspar-rubin-224229-unsplash.jpg" -->
 ## Show me the code!
 
-<img src="/slides/images/caspar-rubin-224229-unsplash.jpg" class="background">
 
 note:
 Photo by Caspar Rubin on Unsplash

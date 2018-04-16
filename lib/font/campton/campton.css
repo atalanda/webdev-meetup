@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Campton';
+    src: url('campton-regular.eot');
+    src: url('campton-regular.eot?#iefix') format('embedded-opentype'),
+         url('campton-regular.woff') format('woff'),
+         url('campton-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Campton';
+    src: url('campton-semibold.eot');
+    src: url('campton-semibold.eot?#iefix') format('embedded-opentype'),
+         url('campton-semibold.woff') format('woff'),
+         url('campton-semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
