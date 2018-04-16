@@ -1,4 +1,4 @@
-![rails-logo](http://rubyonrails.org/slides/images/rails-logo.svg)
+![rails-logo](http://rubyonrails.org/images/rails-logo.svg)
 # 5.2
 
 Note: Kurz vorstellen (Namen, Werdegang, Aufgabenbereich). Rails: Quelloffenes Ruby Webframework. "Model View Controller" Architektur. Zwei Grundprinzipien "Don’t repeat yourself" und "Convention over Configuration".
@@ -10,7 +10,7 @@ Note: Kurz vorstellen (Namen, Werdegang, Aufgabenbereich). Rails: Quelloffenes R
 
 ## RubyConf
 
-Pitsburgh (USA)
+Pittsburgh (USA)
 17.-19.04.2018
 ![pitsburgh](slides/images/pitsburgh.jpg)
 
@@ -24,7 +24,8 @@ Note: Die größte und längste Konferenz für Ruby und Rails Enthusiasten
 
 Rails Version Marketplace
 
-- 09.2017 - heute **5.1.3**
+- 04.2017 - today **5.2.0**
+- 09.2017 - 04.2017 **5.1.3**
 - 08.2017 - 09.2017 **4.2.9**
 - 12.2013 - 08.2017 **3.2.X**
 
@@ -49,13 +50,6 @@ Note: Wir werden jetzt die neusten Main-Features durchgehen und Georg und ich we
 Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments).
 
 
-### Upload
-```erb
-<%= form.file_field :avatar %>
-<%= form.file_field :images, multiple: true %>
-```
-
-
 ### Model
 
 ```ruby
@@ -69,9 +63,11 @@ Note: Das neue has_one_attached Macro erstellt eine 1 zu 1 Beziehung zwischen ei
 
 ### View
 ```erb
-<%= image_tag @user.avatar %>
+<%= form.file_field :avatar %>
+<%= form.file_field :images, multiple: true %>
 ```
 ```erb
+<%= image_tag @user.avatar %>
 <% @user.images.each do |image| %>
   <%= image_tag image %>
 <% end %>
@@ -89,6 +85,10 @@ Note: On-the-fly Generierung von Varianten
 
 
 ### Preview for PDFs and Videos
+```ruby
+gem "ffmpeg"
+gem "mutool"
+```
 ```erb
 <%= image_tag file.preview(resize: "100x100>") %>
 ```
@@ -98,7 +98,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 ### Many more additional features
 * Direct-Upload (from client/browser to cloud)
 * Progressbar
-* Upload to Amazon’s S3, Google’s Cloud Storage and Microsoft Azure Cloud File Storage
+* Upload to Amazon’s S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
 * Mirroring
 * Asynchronous deletion
 * ...
@@ -138,19 +138,6 @@ config.cache_store = :redis_cache_store
 * Automatically deletes least-recently or -frequently used keys on memory shortage
 * Distributed redis servers possible
 * Hot in-memory primary cache
-
-
-### Usage
-```erb
-<% cache(cache_key, expires_in: 60.minutes) %>
-  <h1>Title</h1>
-  ...
-```
-```ruby
-Rails.cache.read(cache_key)
-Rails.cache.write(cache_key)
-Rails.cache.delete(cache_key)
-```
 
 
 ### atalanda
