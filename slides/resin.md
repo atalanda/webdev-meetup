@@ -2,10 +2,11 @@
 
 #### Easy deployment and fleet management for IoT devices
 
-note: about / the product / the problem
-willkommen / es geht um deployment / nicht wie gewohnt auf server / auf schwächere systeme / weniger leistung, netzwerk, unzuverlässig, verteilt
-im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele neue Lösungen / wir stellen Lösung für Raspberries vor / eigenes Produkt siehe Wall
-
+note:
+spannende weil ganz andee Schwierigkeiten auftreten als beim Web Deploy
+web vs iot systeme (ram, disk, networking)
+services die diese Probleme lösen wollen, eines davon ist resin.io
+zuerst produkt, dann weg zu resin, dann resin
 
 ---
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
@@ -14,8 +15,8 @@ im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele 
 
 note: 
 * we want to use the display windows of merchants as an additional way for engaging customers
-zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda.com zu bringen => ROPO/beidseitig
-muss einfach / günstig sein
+zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda zu bringen => ROPO/beidseitig
+Datenanbindung an atalanda
 
 >>>
 <!-- .slide: data-background-image="/slides/images/atalanda_intro_1.jpg" -->
@@ -33,7 +34,10 @@ muss einfach / günstig sein
 >>>
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 ## Different information layers
-* city wide, district, neighbourhood, vendor
+* city wide
+* district
+* neighbourhood
+* vendor
 
 >>>
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
@@ -148,7 +152,7 @@ ansible => cm tool, yml files, einfach, von uns auch für andere Infrastruktur v
 ## Some new problems
 
 * Configuration Drift
-* and because of having the basic ability to deploy and update there are additional issues
+* and because of having the basic ability to deploy and update there are additional issues<!-- .element: class="fragment" -->
   * network accessibility
   * unreliable network
 
@@ -258,6 +262,12 @@ build grid
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
 ## Show me the code!
 
+note:
+* unwrap raspberry
+* Resin-Dashboard
+* neue App
+* download iso und flash (vorbereitet, resin local flash)
+
 >>>
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
 ```bash
@@ -325,22 +335,102 @@ resin config inject FILE --type raspberrypi3
 
 
 note:
-Photo by Caspar Rubin on Unsplash
-
-* unwrap raspberry
-* Resin-Dashboard
-* neue App
-* download iso und flash (vorbereitet, resin local flash)
 * Online nehmen / Device in Web-Interface zeigen
-* TODO: hello world app erstellen und pushen (ev. sinatra auf port 80, dann mit public device url herzeigen)
-* Im Dashboard herzeigen, mit env variablen, und actions
-* TODO: dev mode herzeigen (mit zweitem Pi)
-* TODO: videoplayer service
 
 ---
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+```bash
+git push resin master
+
+[Info]  Starting build for webdev, user it_team                           
+[Info]  Dashboard link: https://dashboard.resin.io/apps/1031903/devices   
+[Info]  Building on arm03                                                 
+[Info]  Pulling previous images for caching purposes...             
+[Success]  Successfully pulled cache images                                 
+[main]  Step 1/11 : FROM resin/raspberrypi3-debian
+[main]   ---> b6da9ef4a1bd
+[main]  Step 2/11 : RUN apt-get update && apt-get install -y                 cec-utils                 chromium-browser                 curl                 feh                 git                 libgl1-mesa-dri
+                 matchbox-window-manager                 python-dbus                 vim                 wget                 x11-xserver-utils                 xinit                 xserver-xorg-core
+    xserver-xorg-video-fbdev                 xterm      && rm -rf /var/lib/apt/lists/*
+[main]   ---> Running in b83329abfe28
+....
+```
+
+note:
+* app erstellen und pushen (dann mit public device url herzeigen)
+* TODO: dev mode herzeigen (mit zweitem Pi)
+
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+```
+[Success]  Release successfully created!                                
+[Info]  ┌─────────┬────────────┬───────────────────────┐      
+[Info]  │ Service │ Image Size │ Build Time            │                                           
+[Info]  ├─────────┼────────────┼───────────────────────┤                              
+[Info]  │ main    │ 627.85 MB  │ 2 minutes, 43 seconds │
+[Info]  └─────────┴────────────┴───────────────────────┘
+[Info]  Build finished in 4 minutes, 13 seconds                   
+                            \             
+                             \                            
+                              \\      
+                               \\               
+                                >\/7                      
+                            _.-(6'  \
+                           (=___._/` \
+                                )  \ |
+                               /   / |
+                              /    > /
+                             j    < _\
+                         _.-' :      ``.
+                         \ r=._\        `.
+                        <`\\_  \         .`-.
+                         \ r-7  `-. ._  ' .  `\
+                          \`,      `-.`7  7)   )
+                           \/         \|  \'  / `-._
+                                      ||    .'
+                                       \\  (
+                                        >\  >
+                                    ,.-' >.'
+                                   <.'_.''
+                                     <'
+
+To git.resin.io:it_team/webdev.git
+   b829dda..51162ec  master -> master
+```
+
+---
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+```bash
+resin ssh 537... --host
+root@537:~# balena ps
+CONTAINER ID        IMAGE                                     CREATED
+9d010ac4757e        registry2.resin.io/shopscreenesa/f31...
+5fdabad3c75b        resin/armv7hf-supervisor:v7.1.18
+```
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+```bash
+resin ssh c94419882ac82bbaa9f6a8d2a4bd62bc 
+Connecting to: c94419882ac82bbaa9f6a8d2a4bd62bc
+root@c944198:/#
+```
+
+---
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/foobar.jpg" -->
+
 # Thanks a lot!
 
-## Next Up: Announcements and opening of the fooBar!
+## Next Up
+
+* Q&A
+* Announcements
+* opening of the fooBar!
 
 note:
 TODO (Stichworte extrahieren, überlegen wo in Präsentation einbauen):
@@ -350,13 +440,6 @@ Andere Inhalte, nicht sicher ob ausreichend Zeit in Präsentation vorhanden:
 https://resin.io/blog/multicontainer-on-resin-io-is-here/
 
 
-```bash
-resin ssh 537... --host
-root@537:~# balena ps
-CONTAINER ID        IMAGE                                     CREATED
-9d010ac4757e        registry2.resin.io/shopscreenesa/f31...
-5fdabad3c75b        resin/armv7hf-supervisor:v7.1.18
-```
 
 
 MÖGLICHE WEITERE THEMEN:
@@ -382,3 +465,4 @@ echo "as" | cec-client -s -o webdev -d 1
 
 https://github.com/resin-io-playground/staged-releases
 https://docs.google.com/presentation/d/1sxlxuslPXxJPW390MmmJTfBcvP9r9PXc4UX-Miv73o0/edit?ts=5acfa110#slide=id.g3816b9d468_3_129
+curl -XPOST https://c94419882ac82bbaa9f6a8d2a4bd62bc.resindevice.io/play
