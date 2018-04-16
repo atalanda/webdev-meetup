@@ -195,9 +195,13 @@ https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c0
 
 ## Content Security Policy
 
+
+
 ### What is it about?
 
 HTTP response header which allows to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS).
+
+
 
 ### Configuring CSP globally
 
@@ -205,11 +209,11 @@ HTTP response header which allows to control resources the user agent is allowed
 # config/initializers/content_security_policy.rb
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :self, :https
-  policy.font_src    :self, :https, :data
-  policy.img_src     :self, :https, :data
+  policy.font_src    :self, :https,
+  policy.img_src     :self, :https, "*.example_cdn.com"
   policy.object_src  :none
-  policy.script_src  :self, :https
-  policy.style_src   :self, :https
+  policy.script_src  :self, :https, "*.example_cdn.com"
+  policy.style_src   :self, :https, "*.example_cdn.com"
  
   # Specify URI for violation reports
   policy.report_uri "/csp-violation-report-endpoint"
@@ -217,6 +221,104 @@ end
 
 ```
 
-<!-- Content-Security-Policy: default-src 'self' *.trusted.com -->
 
-###
+
+### Overriding CSP settings
+
+```ruby
+# Override policy inline
+class PostsController < ApplicationController
+  content_security_policy do |p|
+    p.upgrade_insecure_requests true
+  end
+end
+```
+
+
+
+### Overriding CSP settings
+
+```ruby 
+# Using literal values
+class PostsController < ApplicationController
+  content_security_policy do |p|
+    p.base_uri "https://www.example.com"
+  end
+end
+```
+
+
+
+### Overriding CSP settings
+
+```ruby
+# Using mixed static and dynamic values
+class PostsController < ApplicationController
+  content_security_policy do |p|
+    p.base_uri :self, -> { "https://#{current_user.domain}.example.com" }
+  end
+end
+```
+ 
+
+
+### Overriding CSP settings
+
+```ruby
+# Disabling the global CSP
+class LegacyPagesController < ApplicationController
+  content_security_policy false, only: :index
+end
+
+```
+
+
+
+
+### Automatic nonce generation
+
+```ruby
+# config/initializers/content_security_policy.rb
+Rails.application.config.content_security_policy do |policy|
+  policy.script_src :self, :https
+end
+ 
+Rails.application.config.content_security_policy_nonce_generator = 
+    -> request { SecureRandom.base64(16) }
+
+```
+
+```erb
+<%= javascript_tag nonce: true do -%>
+  alert('Hello, World!');
+<% end -%>
+
+```
+
+
+
+## Credentials
+
+
+
+### What is it about?
+
+`config/credentials.yml.enc` is a fully encrypted file to store production app secrets. It allows saving any authentication credentials with a key in the `config/master.key` file or `RAILS_MASTER_KEY` environment variable. It will eventually replace `Rails.application.secrets` and the encrypted secrets introduced in Rails 5.1.
+
+
+
+### How does it work?
+
+Adding credentials is done by using `bin/rails credentials:edit`. This will open a text editor with an unencrypted version of your credentials. After saving the file, the encrypted version will be saved to `config/credentials.yml.enc` again.
+
+
+
+### atalanda
+
+* Currently using `Rails.application.secrets` feature introduced in Rails 5.1
+
+```yaml
+s3_options:
+  :access_key_id: <%= Rails::Secrets.decrypt("OpF8foWD06MjEdSKA2H3+7qbNBYnz").dump %>	
+  :secret_access_key: <%= Rails::Secrets.decrypt("9fgX6kovy0gKxMgsZynhOpv+e").dump %>
+```
