@@ -52,7 +52,7 @@ Note: Wir werden jetzt die neusten Main-Features durchgehen und Georg und ich we
 
 ### File Uploads in Rails
 
-Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments).
+Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments). Warum nicht Paperclip oder Carrierwave? Weil neuer Ansatz mit FK und Direct-Upload.
 
 
 ### Model
@@ -86,7 +86,7 @@ gem 'mini_magick'
 ```erb
 <%= image_tag @user.avatar.variant(resize: "100x100") %>
 ```
-Note: On-the-fly Generierung von Varianten
+Note: On-the-fly Generierung von Varianten. Lazy Wegspeichern von Varianten - Cacheable?. Gesigned?
 
 
 ### Preview for PDFs and Videos
@@ -105,7 +105,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 
 * Progressbar
 
-* Upload to Amazon's S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
+* Upload to Amazons S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
 
 * Mirroring
 
@@ -124,6 +124,8 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 
 * Switch to ActiveStorage does not have the highest priority
 
+Note: Anzahl der Produktbilder derzeit?
+
 
 
 ## Redis Cache Store
@@ -131,7 +133,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 Note: Wer kennt Redis? Redis ist eine schnelle NoSQL In-Memory-Datenbank mit einer key-value Datenstruktur.
 
 
-## Previous Cachespeicher (for Pages, Fragments, ...)
+### Previous Cachespeicher (for Pages, Fragments, ...)
 * MemoryStore (RAM)
 
 * FileStore (file system)
@@ -162,8 +164,6 @@ config.cache_store = :redis_cache_store
 ### atalanda
 * Currently using default cache store (FileStore)
 
-* Cache little, optimize performance
-
 * Increase in users as before: Redis Cache Store could be interesting
 
 
@@ -186,7 +186,7 @@ Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 ### Pull request
 
-https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065
+[github.com/rails/...](https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065)
 
 
 ![early-hints](slides/images/eary-hints-in-rails-of-course-will-we-use-it.jpg)
