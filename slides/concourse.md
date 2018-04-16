@@ -3,6 +3,74 @@
 ---
 
 # Kanban
+![kanban](slides/images/kanban/kanban.png)
+
+>>>
+
+## Where does it come from?
+
+Systematic method for waste minimization within a value stream without sacrificing productivity
+
+Note: 
+- Lean Manufacturing / Lean Production
+- Waste definition: Ueberbelastung des Teams bzw Ungleichheit der Workloads
+- Materialien bewegen, die zur Zeit nicht bewegt werden muessen
+- Materialien, die nicht verwendet werden (Ueberproduktion)
+- Warten auf den naechsten Arbeitsschritt, Unterbrechung der Produktion waehrend eines Schichtwechsels
+- Produktion vor Gebrauch
+- 
+
+>>>
+
+## Basic Kanban 
+  - Kanban (= japanese term for signboard)
+
+  - Method to uncover waste withing a value stream
+
+  - Buckets with a sign and filled with material
+
+>>>
+
+## Kanban rules
+  - An incoming request provides the quantity of the items needed
+
+  - Production and Transport of an item is always associated with a request
+
+  - The request is always physically attached to an item
+
+  - A finished item is always flawless
+
+  - The number of pending requests is limited
+
+>>>
+
+<!-- .slide: data-background-image="/slides/images/kanban/tps.jpg" -->
+
+Note: 
+We have a bucket with material we use
+we use all the material till the bucket is empty
+the (Kanban) card attached to the bucket is moved to the source of supply
+the source fills the bucket with flawless material and sends it back to the supplier
+
+>>>
+
+## Most basic example in software development
+
+![Kanban Softwaredevelopment](https://conceptboard.com/wp-content/uploads/Conceptboard-Kanban-Board-opt.png)
+
+>>>
+
+## Kanban in atalanda
+
+![Atalanda Jira](slides/images/kanban/ata_jira.png)
+
+>>>
+
+## Literature
+
+- Toyota Production System: Beyond Large-scale Production - Taiichi Ohno (1988);
+- Schlanker Materialfluss mit Lean Production - Philipp Dickmann (2009); 
+- Kanban: Successful Evolutionary Change for Your Technology Business - David Anderson (2010)
 
 ---
 
