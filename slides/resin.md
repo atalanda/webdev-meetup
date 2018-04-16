@@ -255,8 +255,73 @@ build grid
 
 
 ---
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/caspar-rubin-224229-unsplash.jpg" -->
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
 ## Show me the code!
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+```bash
+npm i -g resin-cli
+resin version
+  7.3.1
+```
+
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+```
+resin help --verbose
+  Primary commands:                                    
+    app <name>                          list a single application
+    apps                                list all applications
+    build [source]                      Build a single image or a multicontainer project locally
+    config generate                     generate a config.json file                                     
+    config inject <file>                inject a device configuration file                              
+    deploy <appName> [image]            Deploy a single image or a multicontainer project to a resin.io application
+    device <uuid>                       list a single device
+    device move <uuid>                  move a device to another application                            
+    device reboot <uuid>                restart a device                                                
+    device register <application>       register a device                                               
+    device rename <uuid> [newName]      rename a resin device                                           
+    device shutdown <uuid>              shutdown a device                                               
+    devices                             list all devices
+    local configure <target>            (Re)configure a resinOS drive or image                          
+    local flash <image>                 Flash an image to a drive                                       
+    local logs [deviceIp]               Get or attach to logs of a running container on a resinOS device
+    local push [deviceIp]               Push your changes to a container on local resinOS device
+    local scan                          Scan for resinOS devices in your local network
+    local ssh [deviceIp]                Get a shell into a resinOS device                               
+    login                               login to resin.io
+    logs <uuid>                         show device logs
+    preload <image>                     (beta) preload an app on a disk image (or Edison zip archive)
+    ssh [uuid]                          (beta) get a shell into the running app container of a device
+    sync [uuid]                         (beta) sync your changes to a device
+```
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+## Flash the Image to the SD Card
+
+```bash
+resin local flash resin-webdev-2.12.5+rev2-v7.1.18.img
+? Select drive /dev/mmcblk0 (15.5 GB) - SL16G
+? This will erase the selected drive. Are you sure? Yes
+Flashing [========================] 100% eta 0s
+Validating [========================] 100% eta 0s
+```
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
+
+## Preconfigure new Device
+
+```bash
+resin device register APP_NAME
+resin device rename UUID
+resin config generate --device UUID --output FILE
+resin config inject FILE --type raspberrypi3
+```
 
 
 note:
@@ -266,7 +331,7 @@ Photo by Caspar Rubin on Unsplash
 * Resin-Dashboard
 * neue App
 * download iso und flash (vorbereitet, resin local flash)
-* Online nehmen
+* Online nehmen / Device in Web-Interface zeigen
 * TODO: hello world app erstellen und pushen (ev. sinatra auf port 80, dann mit public device url herzeigen)
 * Im Dashboard herzeigen, mit env variablen, und actions
 * TODO: dev mode herzeigen (mit zweitem Pi)
@@ -303,20 +368,14 @@ dev mode: ssh access, docker socket
 * ev: Concourse-Pipeline für Resin-Deployments?
 
 SOME CLI COMMANDS:
-resin help --verbose
+resin ssh UUID
 resin devices -a webdev
 resin device rename UUID
-resin ssh UUID
 resin os versions raspberrypi3
 resin os download raspberrypi3 -o out.img
 resin logs UUID
 resin preload  os.img --app xxx --commit xxx --splash-image logo.png
-resin local flash os.img
 resin apps
-resin device register APP_NAME
-resin device rename UUID
-resin config generate --device UUID --output FILE
-resin config inject FILE --type raspberrypi3
 
 echo "on 0" | cec-client -s -o webdev -d 1
 echo "as" | cec-client -s -o webdev -d 1
