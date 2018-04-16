@@ -8,7 +8,7 @@ im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele 
 
 
 ---
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
 # The product
 
 
@@ -18,7 +18,10 @@ zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda
 muss einfach / günstig sein
 
 >>>
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+<!-- .slide: data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+
+>>>
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 * pure text
 * image / text
 * pure image
@@ -28,21 +31,24 @@ muss einfach / günstig sein
 * events
 
 >>>
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 ## Different information layers
 * city wide, district, neighbourhood, vendor
 
 >>>
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_intro_1.jpg" -->
+<!-- .slide: data-state="dimbg" data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 ## Different owners of information
 * city manager
 * local newspaper
 * advertising association
-* Atalanda
+* atalanda
 * vendor
 
 
 note: more screenshots for events, quizzes, etc.
+
+>>>
+<!-- .slide: data-background-image="/slides/images/atalanda_slider_1.jpg" -->
 
 ---
 <!-- .slide: data-background-color="#FFFFFF" -->
@@ -92,12 +98,12 @@ Photo by Angel Sinigersky on Unsplash
 * Visibility
 
 >>>
-<!-- .slide: data-state="dimbg" data-background-image="/slides/images/maintenance.png" -->
-## Of course this is not the way we want to update a device
+<!-- .slide: data-background-image="/slides/images/maintenance.png" -->
+## Updating the device?
 
 ---
 <!-- .slide: data-background-color="#FFFFFF" -->
-## Updates and Deployments (still first take)
+## Automating updates and deployments
 
 <img src="/slides/images/Ansible_logo.png", style="width:20%">
 
@@ -163,34 +169,48 @@ note:
 <!-- .slide: data-background-color="#FFFFFF" -->
 <img src="/slides/images/Resin-io-logo.png">
 
-note:
-* docker based / ready made base images / supervisor koordinert container deployment
-* we do nothing in the host system (no conf drift!)
-* everything is in container(s)
-* host and kernel updates
-* development workflow
-* visibility (dashboard)
-* OS-Optimierung für möglichst wenige Schreibvorgänge auf SD-Card, Toolkit für einfaches Setup neuer vorkonfigurierter Geräte
-* container deltas
-
 >>>
 <!-- .slide: data-background-color="#FFFFFF" -->
+
+* Docker based, ready made base images
+* everything is in container(s)<!-- .element: class="fragment" -->
+* We do nothing in the host system (no conf drift!)<!-- .element: class="fragment" -->
+* Host and Kernel Updates<!-- .element: class="fragment" -->
+* Development Workflow<!-- .element: class="fragment" -->
+* Visibility (Dashboard)<!-- .element: class="fragment" -->
+* container deltas<!-- .element: class="fragment" -->
+
+note:
+* OS-Optimierung für möglichst wenige Schreibvorgänge auf SD-Card, Toolkit für einfaches Setup neuer vorkonfigurierter Geräte
+
+>>>
+<img src="/slides/images/resin_references.png" style="width: 1400px">
+
+---
+<!-- .slide: data-background-color="#FFFFFF" -->
 <img src="/slides/images/architecture.png" style="width: 50%">
+
+note:
+* supervisor koordinert container deployment
 
 ---
 ## Docker => Moby => Balena
 
-* https://www.balena.io/
-
 <img src="/slides/images/balena.svg">
 
 note:
-* 10-70 times more bandwidth efficient
-* atomic and durable image pulling (power & network failures)
-* conservative about how much it writes to the filesystem (not writing compressed layers, on the fly extraction)
-* low-memory
-* build-time volumes
-* small binary (3.5x smaller)
+* https://www.balena.io/
+
+>>>
+* from https://resin.io/blog/announcing-balena-a-moby-based-container-engine-for-iot/
+  * 10-70 times more bandwidth efficient
+  * atomic and durable image pulling (power & network failures)<!-- .element: class="fragment" -->
+  * conservative about how much it writes to the filesystem (not writing compressed layers, on the fly extraction)<!-- .element: class="fragment" -->
+  * low-memory<!-- .element: class="fragment" -->
+  * build-time volumes<!-- .element: class="fragment" -->
+  * small binary (3.5x smaller)<!-- .element: class="fragment" -->
+
+note:
 - Docker Swarm, support for plugins, cloud logging drivers, overlay networking drivers, and stores that are not backed by boltdb, such as etcd, consul, zookeeper, etc
 
 https://resin.io/blog/announcing-balena-a-moby-based-container-engine-for-iot/#technical_comparison
@@ -255,7 +275,7 @@ Photo by Caspar Rubin on Unsplash
 ---
 # Thanks a lot!
 
-## Next Up: Announcements and opening of the Foo-Bar!
+## Next Up: Announcements and opening of the fooBar!
 
 note:
 TODO (Stichworte extrahieren, überlegen wo in Präsentation einbauen):
@@ -300,3 +320,6 @@ resin config inject FILE --type raspberrypi3
 
 echo "on 0" | cec-client -s -o webdev -d 1
 echo "as" | cec-client -s -o webdev -d 1
+
+https://github.com/resin-io-playground/staged-releases
+https://docs.google.com/presentation/d/1sxlxuslPXxJPW390MmmJTfBcvP9r9PXc4UX-Miv73o0/edit?ts=5acfa110#slide=id.g3816b9d468_3_129
