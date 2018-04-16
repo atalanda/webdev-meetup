@@ -22,20 +22,25 @@ Note: Die größte und längste Konferenz für Ruby und Rails Enthusiasten
 
 ## ![atalanda-logo](slides/images/atalanda.png) Anecdote
 
-Rails Version Marketplace
+|          |                   |
+|----------|-------------------|
+|**5.2.0** | since 04/2018 	   |
+|**5.1.3** | 04/2018 - 09/2017 |
+|**4.2.9** | 09/2017 - 08/2017 |
+|**3.2.X** | 08/2017 - 12/2013 |
 
-- 04.2017 - today **5.2.0**
-- 09.2017 - 04.2017 **5.1.3**
-- 08.2017 - 09.2017 **4.2.9**
-- 12.2013 - 08.2017 **3.2.X**
 
 
 
 ## New Main Features
 * Active Storage
+
 * Redis Cache Store
+
 * HTTP2 / Early Hints
+
 * CSP
+
 * Credentials
 
 Note: Wir werden jetzt die neusten Main-Features durchgehen und Georg und ich werden euch erzählen ob und wie wir gedenken die Features in atalanda einzubauen.
@@ -47,7 +52,7 @@ Note: Wir werden jetzt die neusten Main-Features durchgehen und Georg und ich we
 
 ### File Uploads in Rails
 
-Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments).
+Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments). Warum nicht Paperclip oder Carrierwave? Weil neuer Ansatz mit FK und Direct-Upload.
 
 
 ### Model
@@ -81,7 +86,7 @@ gem 'mini_magick'
 ```erb
 <%= image_tag @user.avatar.variant(resize: "100x100") %>
 ```
-Note: On-the-fly Generierung von Varianten
+Note: On-the-fly Generierung von Varianten. Lazy Wegspeichern von Varianten - Cacheable?. Gesigned?
 
 
 ### Preview for PDFs and Videos
@@ -97,19 +102,29 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 
 ### Many more additional features
 * Direct-Upload (from client/browser to cloud)
+
 * Progressbar
-* Upload to Amazon S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
+
+* Upload to Amazons S3, Googles Cloud Storage and Microsoft Azure Cloud File Storage
+
 * Mirroring
+
 * Asynchronous deletion
+
 * ...
 
 
 ### atalanda
 
 * Currently Paperclip and S3
+
 * `has_attached_file` macro in model
+
 * Variants get created on upload
+
 * Switch to ActiveStorage does not have the highest priority
+
+Note: Anzahl der Produktbilder derzeit?
 
 
 
@@ -120,8 +135,11 @@ Note: Wer kennt Redis? Redis ist eine schnelle NoSQL In-Memory-Datenbank mit ein
 
 ### Previous Cachespeicher (for Pages, Fragments, ...)
 * MemoryStore (RAM)
+
 * FileStore (file system)
+
 * MemCacheStore (Memory object caching system)
+
 * NullStore (Never saves anything)
 
 
@@ -135,14 +153,17 @@ config.cache_store = :redis_cache_store
 ### Redis Cache Store
 
 * Fault-tolerant (doesn't throw exceptions)
+
 * Automatically deletes least-recently or -frequently used keys on memory shortage
+
 * Distributed redis servers possible
+
 * Hot in-memory primary cache
 
 
 ### atalanda
 * Currently using default cache store (FileStore)
-* Cache little, optimize performance
+
 * Increase in users as before: Redis Cache Store could be interesting
 
 
@@ -153,8 +174,11 @@ config.cache_store = :redis_cache_store
 ### HTTP2/Early Hints
 
 * Assets send before request finished
+
 * Early Hints still in draft
+
 * HTTP/2 and TLS as requirement
+
 * `rails s --early-hints`
 
 Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
@@ -166,3 +190,33 @@ Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 
 ![early-hints](slides/images/eary-hints-in-rails-of-course-will-we-use-it.jpg)
+
+
+
+## Content Security Policy
+
+### What is it about?
+
+HTTP response header which allows to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS).
+
+### Configuring CSP globally
+
+```ruby
+# config/initializers/content_security_policy.rb
+Rails.application.config.content_security_policy do |policy|
+  policy.default_src :self, :https
+  policy.font_src    :self, :https, :data
+  policy.img_src     :self, :https, :data
+  policy.object_src  :none
+  policy.script_src  :self, :https
+  policy.style_src   :self, :https
+
+  # Specify URI for violation reports
+  policy.report_uri "/csp-violation-report-endpoint"
+end
+
+```
+
+<!-- Content-Security-Policy: default-src 'self' *.trusted.com -->
+
+###
