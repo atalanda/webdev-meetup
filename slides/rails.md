@@ -206,7 +206,9 @@ Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 ### What is it about?
 
-HTTP response header which allows to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS).
+HTTP response header to control resources the user agent is allowed to load for a given page. 
+
+Note: With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS).
 
 
 ### Configuring CSP globally
@@ -302,12 +304,18 @@ Rails.application.config.content_security_policy_nonce_generator =
 
 ### What is it about?
 
-`config/credentials.yml.enc` is a fully encrypted file to store production app secrets. It allows saving any authentication credentials with a key in the `config/master.key` file or `RAILS_MASTER_KEY` environment variable. It will eventually replace `Rails.application.secrets` and the encrypted secrets introduced in Rails 5.1.
+- `config/credentials.yml.enc`: fully encrypted file for production app secrets. 
+
+- Key is either `config/master.key` file or `RAILS_MASTER_KEY` environment variable
+
+- eventually replaces `Rails.application.secrets`
 
 
 ### How does it work?
 
-Adding credentials is done by using `bin/rails credentials:edit`. This will open a text editor with an unencrypted version of your credentials. After saving the file, the encrypted version will be saved to `config/credentials.yml.enc` again.
+`bin/rails credentials:edit`
+
+Note: Adding credentials is done by using `bin/rails credentials:edit`. This will open a text editor with an unencrypted version of your credentials. After saving the file, the encrypted version will be saved to `config/credentials.yml.enc` again.
 
 
 ### atalanda
