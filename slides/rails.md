@@ -52,7 +52,8 @@ Note: Wir werden jetzt die neusten Main-Features durchgehen und Georg und ich we
 
 ### File Uploads in Rails
 
-Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Seit der neuen Version hat man die nun folgende Möglichkeiten. Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments). Warum nicht Paperclip oder Carrierwave? Weil neuer Ansatz mit FK und Direct-Upload.
+Note: Super wichtiges Feature, allerdings hat man bis jetzt immer auf Plugins zurückgreifen müssen. Jetzt gibt es eine Implementierung im Rails Core, welche ein paar neue Features mit sich bringt, welche durch die Plugins nicht möglich waren.
+Optional für Vortrag: `rails active_storage:install` erstellt eine Migration mit 2 Tabellen (Blobs und Attachments). Neue Features: FK und Direct-Upload.
 
 
 ### Model
@@ -63,7 +64,7 @@ class User < ApplicationRecord
   has_many_attached :images
 end
 ```
-Note: Das neue has_one_attached Macro erstellt eine 1 zu 1 Beziehung zwischen einem User-Eintrag und einem File. Das has_many_attached Macro erstellt eine 1 zu N Beziehung zwischen einem User-Eintrag und mehreren Files.
+Note: Das neue has_one_attached Macro erstellt eine 1 zu 1 Beziehung zwischen einem User-Eintrag und einem File. Das has_many_attached Macro erstellt eine 1 zu N Beziehung zwischen einem User-Eintrag und mehreren Files. Das ganze funktioniert ohne Migration, da der Foreign Key nicht auf der User-Tabelle gespeichert wird, sondern auf der vom Active-Storage.
 
 
 ### View
@@ -80,13 +81,14 @@ Note: Das neue has_one_attached Macro erstellt eine 1 zu 1 Beziehung zwischen ei
 
 
 ### Image Transformation
+
 ```ruby
 gem 'mini_magick'
 ```
 ```erb
 <%= image_tag @user.avatar.variant(resize: "100x100") %>
 ```
-Note: On-the-fly Generierung von Varianten. Lazy Wegspeichern von Varianten - Cacheable?. Gesigned?
+Note: On-the-fly Generierung von Varianten. Lazy Erstellen von Varianten, signierte permanente Referenz, expiring Service URL für den Download.
 
 
 ### Preview for PDFs and Videos
@@ -101,6 +103,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 
 
 ### Many more additional features
+
 * Direct-Upload (from client/browser to cloud)
 
 * Progressbar
@@ -116,15 +119,13 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 
 ### atalanda
 
-* Currently Paperclip and S3
+* Currently Paperclip and S3 (39 Million images)
 
 * `has_attached_file` macro in model
 
 * Variants get created on upload
 
-* Switch to ActiveStorage does not have the highest priority
-
-Note: Anzahl der Produktbilder derzeit?
+* Switch to ActiveStorage doesn't have the highest priority
 
 
 
@@ -134,6 +135,7 @@ Note: Wer kennt Redis? Redis ist eine schnelle NoSQL In-Memory-Datenbank mit ein
 
 
 ### Previous Cachespeicher (for Pages, Fragments, ...)
+
 * MemoryStore (RAM)
 
 * FileStore (file system)
@@ -162,6 +164,7 @@ config.cache_store = :redis_cache_store
 
 
 ### atalanda
+
 * Currently using default cache store (FileStore)
 
 * Increase in users as before: Redis Cache Store could be interesting
@@ -184,12 +187,17 @@ config.cache_store = :redis_cache_store
 Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 
+### Process
+<!-- .slide: data-background-color="#FFFFFF" -->
+![early-hints-process](slides/images/early_hints.png)
+
+
 ### Pull request
 
-[github.com/rails/...](https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065)
+[https://github.com/rails/rails/pull/30744](https://github.com/rails/rails/pull/30744/commits/59a02fb7bcbe68f26e1e7fdcec45c00c66e4a065)
 
 
-![early-hints](slides/images/eary-hints-in-rails-of-course-will-we-use-it.jpg)
+![early-hints-meme](slides/images/early-hints-in-rails-of-course-will-we-use-it.jpg)
 
 
 
