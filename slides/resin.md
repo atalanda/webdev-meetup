@@ -2,8 +2,6 @@
 
 ## Easy deployment and fleet management for IoT devices
 
-<img src="/slides/images/atalanda_slider_1.jpg">
-
 note: about / the product / the problem
 willkommen / es geht um deployment / nicht wie gewohnt auf server / auf schwächere systeme / weniger leistung, netzwerk, unzuverlässig, verteilt
 im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele neue Lösungen / wir stellen Lösung für Raspberries vor / eigenes Produkt siehe Wall
@@ -13,7 +11,7 @@ im web gut gelöstes Problem / siehe voriger Talk / IoT schwieriger, aber viele 
 
 # The product
 
-<img src="/slides/images/atalanda_slider_1.jpg">
+<img src="/slides/images/atalanda_slider_1.jpg" style="width:1000px">
 
 note: 
 * we want to use the display windows of merchants as an additional way for engaging customers
@@ -21,23 +19,34 @@ zusätzlicher Weg Kunden ins Geschäft zu bringen / interessieren / auf atalanda
 muss einfach / günstig sein
 
 >>>
+* pure text
+* image / text
+* pure image
+* quote
 * special deals
 * quizzes
-* ad network with city, other vendors and others
 * events
-<img src="/slides/images/atalanda_intro_1.jpg">
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
+
+>>>
+* different information layers
+  * city wide, district, neighbourhood, vendor
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
+
+>>>
+* different owners of information
+  * city manager
+  * local newspaper
+  * advertising association
+  * Atalanda
+  * vendor
+
+<img src="/slides/images/atalanda_intro_1.jpg" class="background">
 
 note: more screenshots for events, quizzes, etc.
 
->>>
-## This is not the way we want to update an IoT device
-
-<img src="/slides/images/maintenance.png">
-
-note: erster Teil zum Vermeiden ist das Admin-Backend /zweiter Teil später
-
 ---
-## Therefore the content can be updated with an admin backend
+## Admin backend for Merchants
 
 <img src="/slides/images/schaufenster_digital_screenshot.png">
 
@@ -65,7 +74,7 @@ note: eliminate one after the other
 ---
 ## First take
 
-<img src="/slides/images/angel-sinigersky-512707-unsplash.jpg">
+<img src="/slides/images/angel-sinigersky-512707-unsplash.jpg" class="background">
 
 >>>
 <img src="/slides/images/little_pi.png">
@@ -80,6 +89,11 @@ Photo by Angel Sinigersky on Unsplash
 * Deployment
 * System-Updates
 * Visibility
+
+>>>
+## Of course this is not the way we want to update a device
+
+<img src="/slides/images/maintenance.png">
 
 ---
 ## Updates and Deployments (still first take)
@@ -155,25 +169,41 @@ note:
 * OS-Optimierung für möglichst wenige Schreibvorgänge auf SD-Card, Toolkit für einfaches Setup neuer vorkonfigurierter Geräte
 * container deltas
 
+>>>
+<img src="/slides/images/architecture.png" style="width: 50%">
+
 ---
-## TODO: Balena
+## Docker => Moby => Balena
 
 * https://www.balena.io/
 
 <img src="/slides/images/balena.svg">
 
 note:
+* 10-70 times more bandwidth efficient
+* atomic and durable image pulling (power & network failures)
+* conservative about how much it writes to the filesystem (not writing compressed layers, on the fly extraction)
+* low-memory
+* build-time volumes
+* small binary (3.5x smaller)
+- Docker Swarm, support for plugins, cloud logging drivers, overlay networking drivers, and stores that are not backed by boltdb, such as etcd, consul, zookeeper, etc
+
 https://resin.io/blog/announcing-balena-a-moby-based-container-engine-for-iot/#technical_comparison
 TODO: how does balena deltas relate to the delta feature RESIN_SUPERVISOR_DELTA (https://docs.resin.io/learn/deploy/delta/)
 
 >>>
-<img src="/slides/images/architecture.png" style="width: 50%">
 
-note:
+<img src="/slides/images/Balena-Blogpost.jpg">
 
->>>
-https://docs.resin.io/reference/hardware/devices/
-<img src="/slides/images/resin_supported.png">
+
+
+---
+## Device Support
+
+* https://docs.resin.io/reference/hardware/devices/
+* https://docs.resin.io/reference/base-images/resin-base-images/
+
+<img src="/slides/images/resin_supported.png" class="background">
 
 ---
 ## Deployment
@@ -200,7 +230,7 @@ build grid
 ---
 ## Show me the code!
 
-<img src="/slides/images/caspar-rubin-224229-unsplash.jpg">
+<img src="/slides/images/caspar-rubin-224229-unsplash.jpg" class="background">
 
 note:
 Photo by Caspar Rubin on Unsplash
@@ -213,7 +243,7 @@ Photo by Caspar Rubin on Unsplash
 * TODO: hello world app erstellen und pushen (ev. sinatra auf port 80, dann mit public device url herzeigen)
 * Im Dashboard herzeigen, mit env variablen, und actions
 * TODO: dev mode herzeigen (mit zweitem Pi)
-* TODO: kleine app mit Mitmachmöglichkeit
+* TODO: videoplayer service
 
 ---
 # Thanks a lot!
@@ -260,3 +290,6 @@ resin device register APP_NAME
 resin device rename UUID
 resin config generate --device UUID --output FILE
 resin config inject FILE --type raspberrypi3
+
+echo "on 0" | cec-client -s -o webdev -d 1
+echo "as" | cec-client -s -o webdev -d 1
