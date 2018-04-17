@@ -66,6 +66,11 @@ the source fills the bucket with flawless material and sends it back to the supp
 
 >>>
 
+## Kanban vs. Pipeline
+![Atalanda Pipeline Kanban](slides/images_concourse/ata_pipeline_kanban.png)
+
+>>>
+
 ## Literature
 
 - Toyota Production System: Beyond Large-scale Production - Taiichi Ohno (1988);
