@@ -14,6 +14,9 @@ section.has-light-background h5,
 section.has-light-background h6 {
   color: #1b1f30; }
 
+section.has-light-background a {
+  color: #6e7280; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -29,12 +32,12 @@ body {
 
 ::selection {
   color: #fff;
-  background: white;
+  background: #e1e3e7;
   text-shadow: none; }
 
 ::-moz-selection {
   color: #fff;
-  background: white;
+  background: #e1e3e7;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -214,20 +217,20 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #d8d8d8;
+  color: #9a9faf;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #fefefe;
+  color: #c5c8d1;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #b2b2b2; }
+  background: #70778d; }
 
 /*********************************************
  * IMAGES
@@ -249,21 +252,21 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #d8d8d8;
+  border-color: #9a9faf;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: #d8d8d8; }
+  color: #9a9faf; }
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: #d8d8d8; }
+  color: #9a9faf; }
 
 .reveal .progress span {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -278,7 +281,7 @@ body {
   max-height: 700px; }
 
 strong {
-  color: #d8d8d8; }
+  color: #9a9faf; }
 
 html.dimbg .slide-background.present {
   opacity: 0.5 !important;
@@ -300,5 +303,5 @@ html.dimbg .slide-background.future {
   margin-bottom: 20px; }
 
 .reveal h4 {
-  color: #d8d8d8;
+  color: #9a9faf;
   text-transform: uppercase; }

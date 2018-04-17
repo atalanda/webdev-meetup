@@ -26,7 +26,7 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 600;
-$linkColor: #d8d8d8;
+$linkColor: #9a9faf;
 $linkColorHover: lighten( $linkColor, 15%);
 $selectionBackgroundColor: lighten( $linkColor, 25%);
 $heading1Size: 2.5em;
@@ -42,6 +42,10 @@ section.has-light-background {
     h5,
     h6 {
         color: #1b1f30;
+    }
+
+    a {
+        color: #6e7280;
     }
 }
 
