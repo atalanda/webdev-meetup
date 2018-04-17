@@ -104,9 +104,7 @@ note: Es sollte alles automatisiert werden, was automatisiert werden kann.
 * atomic deploys: secrets within builds
 
 ---
-# Pipeline
-
-<img src="/slides/images_concourse/atalanda-pipeline.png" class="background">
+<!-- .slide: data-background-image="/slides/images_concourse/atalanda-pipeline.png" -->
 
 >>>
 
