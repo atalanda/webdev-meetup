@@ -328,3 +328,7 @@ s3_options:
   :access_key_id: <%= Rails::Secrets.decrypt("OpF8foWD06MjEdSKA2H3+7qbNB").dump %>
   :secret_access_key: <%= Rails::Secrets.decrypt("9fgX6kovy0gKxMgsZynhOp").dump %>
 ```
+
+
+
+# THX
