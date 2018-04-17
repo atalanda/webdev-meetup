@@ -11,18 +11,18 @@
 
 Systematic method for waste minimization within a value stream without sacrificing productivity
 
-Note: 
+Note:
 - Lean Manufacturing / Lean Production
 - Waste definition: Ueberbelastung des Teams bzw Ungleichheit der Workloads
 - Materialien bewegen, die zur Zeit nicht bewegt werden muessen
 - Materialien, die nicht verwendet werden (Ueberproduktion)
 - Warten auf den naechsten Arbeitsschritt, Unterbrechung der Produktion waehrend eines Schichtwechsels
 - Produktion vor Gebrauch
-- 
+-
 
 >>>
 
-## Basic Kanban 
+## Basic Kanban
   - Kanban (= japanese term for signboard)
 
   - Method to uncover waste withing a value stream
@@ -46,7 +46,7 @@ Note:
 
 <!-- .slide: data-background-image="/slides/images/kanban/tps.jpg" -->
 
-Note: 
+Note:
 We have a bucket with material we use
 we use all the material till the bucket is empty
 the (Kanban) card attached to the bucket is moved to the source of supply
@@ -69,12 +69,12 @@ the source fills the bucket with flawless material and sends it back to the supp
 ## Literature
 
 - Toyota Production System: Beyond Large-scale Production - Taiichi Ohno (1988);
-- Schlanker Materialfluss mit Lean Production - Philipp Dickmann (2009); 
+- Schlanker Materialfluss mit Lean Production - Philipp Dickmann (2009);
 - Kanban: Successful Evolutionary Change for Your Technology Business - David Anderson (2010)
 
 ---
 
-<img src="/slides/concourse_images/concourse-logo.png">
+<img src="/slides/images_concourse/concourse-logo.png">
 <h4 style="color: white">an open-source continuous thing-doer</h4>
 
 ---
@@ -106,14 +106,14 @@ note: Es sollte alles automatisiert werden, was automatisiert werden kann.
 ---
 # Pipeline
 
-<img src="/slides/concourse_images/atalanda-pipeline.png" class="background">
+<img src="/slides/images_concourse/atalanda-pipeline.png" class="background">
 
 >>>
 
 # Resources
 
 * git, slack-notification, S3, docker, time...
-* base on docker images
+* based on docker images
 * language agnostic
 
 ```yaml
@@ -181,10 +181,10 @@ notes: ich sag concourse nicht wie die Pipeline aussieht, sondern definiere nur 
 
 # Other Projects
 
-<img src="/slides/concourse_images/circle-ci.svg">
-<img src="/slides/concourse_images/codeship.png">
-<img src="/slides/concourse_images/travisci.png">
-<img src="/slides/concourse_images/teamcity.jpg">
+<img src="/slides/images_concourse/circle-ci.svg">
+<img src="/slides/images_concourse/codeship.png">
+<img src="/slides/images_concourse/travisci.png">
+<img src="/slides/images_concourse/teamcity.jpg">
 
 notes: wir sind fan von hostet solutions, sodass wir uns auf unsere core competences konzentrieren können
 
