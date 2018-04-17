@@ -3,7 +3,7 @@
 #### Easy deployment and fleet management for IoT devices
 
 note:
-spannende weil ganz andee Schwierigkeiten auftreten als beim Web Deploy
+spannende weil ganz andere Schwierigkeiten auftreten als beim Web Deploy
 web vs iot systeme (ram, disk, networking)
 services die diese Probleme lösen wollen, eines davon ist resin.io
 zuerst produkt, dann weg zu resin, dann resin
@@ -257,16 +257,18 @@ build grid
 ---
 <!-- .slide: data-background-image="/slides/images/20171110_150023.jpg" -->
 
+>>>
+<!-- .slide: data-background-image="/slides/images/resin-deploy-full.png" -->
 
 ---
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
 ## Show me the code!
 
 note:
-* unwrap raspberry
 * Resin-Dashboard
 * neue App
 * download iso und flash (vorbereitet, resin local flash)
+* unwrap raspberry
 
 >>>
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/3055-06.jpg" -->
@@ -359,7 +361,7 @@ git push resin master
 
 note:
 * app erstellen und pushen (dann mit public device url herzeigen)
-* TODO: dev mode herzeigen (mit zweitem Pi)
+* dev mode erwähnen
 
 
 >>>
@@ -422,6 +424,12 @@ root@c944198:/#
 ```
 
 ---
+<!-- .slide: data-background-image="/slides/images/3055-06.jpg" -->
+
+note:
+ev. noch erwähnen: local mode (ssh / docker socket), multicontainer, dbus, privileged mode (gpio / i2c), wifi connect, cec, staged releases
+
+---
 <!-- .slide: data-state="dimbg" data-background-image="/slides/images/foobar.jpg" -->
 
 # Thanks a lot!
@@ -433,22 +441,14 @@ root@c944198:/#
 * opening of the fooBar!
 
 note:
-TODO (Stichworte extrahieren, überlegen wo in Präsentation einbauen):
-* https://resin.io/blog/filters-and-tags-a-fleet-management-primer-for-resin-io/
-
-Andere Inhalte, nicht sicher ob ausreichend Zeit in Präsentation vorhanden:
-https://resin.io/blog/multicontainer-on-resin-io-is-here/
-
-
-
 
 MÖGLICHE WEITERE THEMEN:
+https://resin.io/blog/filters-and-tags-a-fleet-management-primer-for-resin-io/
+https://resin.io/blog/multicontainer-on-resin-io-is-here/
 WLAN setup (USB, WifiConnect)
-Videoplayer Performance
 dbus (network einstellen herzeigen)
 AWS IoT, Azure, IBM, Artik Cloud
 dev mode: ssh access, docker socket
-* ev: Concourse-Pipeline für Resin-Deployments?
 
 SOME CLI COMMANDS:
 resin ssh UUID
