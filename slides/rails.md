@@ -1,3 +1,4 @@
+<!-- .slide: data-background-color="#FFFFFF" -->
 ![rails-logo](http://rubyonrails.org/images/rails-logo.svg)
 # 5.2
 
@@ -134,7 +135,7 @@ Note: On-the-fly Generierung einer Vorschau für PDFs und Videos. Braucht zwei z
 Note: Wer kennt Redis? Redis ist eine schnelle NoSQL In-Memory-Datenbank mit einer key-value Datenstruktur.
 
 
-### Previous Cachespeicher (for Pages, Fragments, ...)
+### Previous Cache store (for Pages, Fragments, ...)
 
 * MemoryStore (RAM)
 
@@ -206,7 +207,7 @@ Note: Puma ist der Standard-Server wenn `rails s` zum Starten ausgeführt wird
 
 ### What is it about?
 
-HTTP response header to control resources the user agent is allowed to load for a given page. 
+HTTP response header to control resources the user agent is allowed to load for a given page.
 
 Note: With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS).
 
@@ -222,7 +223,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.object_src  :none
   policy.script_src  :self, :https, "*.example_cdn.com"
   policy.style_src   :self, :https, "*.example_cdn.com"
- 
+
   # Specify URI for violation reports
   policy.report_uri "/csp-violation-report-endpoint"
 end
@@ -244,7 +245,7 @@ end
 
 ### Overriding CSP settings
 
-```ruby 
+```ruby
 # Using literal values
 class PostsController < ApplicationController
   content_security_policy do |p|
@@ -284,8 +285,8 @@ end
 Rails.application.config.content_security_policy do |policy|
   policy.script_src :self, :https
 end
- 
-Rails.application.config.content_security_policy_nonce_generator = 
+
+Rails.application.config.content_security_policy_nonce_generator =
     -> request { SecureRandom.base64(16) }
 
 ```
@@ -304,7 +305,7 @@ Rails.application.config.content_security_policy_nonce_generator =
 
 ### What is it about?
 
-- `config/credentials.yml.enc`: fully encrypted file for production app secrets. 
+- `config/credentials.yml.enc`: fully encrypted file for production app secrets.
 
 - Key is either `config/master.key` file or `RAILS_MASTER_KEY` environment variable
 
