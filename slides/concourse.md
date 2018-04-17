@@ -25,7 +25,7 @@ Note:
 ## Basic Kanban
   - Kanban (= japanese term for signboard)
 
-  - Method to uncover waste withing a value stream
+  - Method to uncover waste within a value stream
 
   - Buckets with a sign and filled with material
 
@@ -181,10 +181,11 @@ notes: ich sag concourse nicht wie die Pipeline aussieht, sondern definiere nur 
 
 # Other Projects
 
-<img src="/slides/images_concourse/circle-ci.svg">
-<img src="/slides/images_concourse/codeship.png">
-<img src="/slides/images_concourse/travisci.png">
-<img src="/slides/images_concourse/teamcity.jpg">
+<div style="display: flex; align-items: center; justify-content: space-around"><img src="/slides/images_concourse/circle-ci.svg" width="300px">
+  <img src="/slides/images_concourse/codeship.png" width="300px">
+  <img src="/slides/images_concourse/travisci.png" width="300px">
+  <img src="/slides/images_concourse/teamcity.jpg" height="150px">
+</div>
 
 notes: wir sind fan von hostet solutions, sodass wir uns auf unsere core competences konzentrieren können
 
